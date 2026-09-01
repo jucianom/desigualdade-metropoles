@@ -1,0 +1,62 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="sphereGrad" cx="34%" cy="30%" r="82%">
+      <stop offset="0%" stop-color="#a1b5bc"/>
+      <stop offset="26%" stop-color="#828589"/>
+      <stop offset="58%" stop-color="#586e77"/>
+      <stop offset="100%" stop-color="#1e374e"/>
+    </radialGradient>
+    <linearGradient id="clayBand" x1="10%" y1="70%" x2="95%" y2="100%">
+      <stop offset="0%" stop-color="#c9ada7" stop-opacity="0"/>
+      <stop offset="45%" stop-color="#c9ada7" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#d8bdb6" stop-opacity="0.5"/>
+    </linearGradient>
+    <radialGradient id="specular" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6"/>
+      <stop offset="60%" stop-color="#ffffff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rimLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f2e9e4" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#f2e9e4" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="sphereClip">
+      <circle cx="60" cy="60" r="56"/>
+    </clipPath>
+    <filter id="softBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4.2"/>
+    </filter>
+  </defs>
+
+  <circle cx="60" cy="60" r="56" fill="url(#sphereGrad)"/>
+
+  <g clip-path="url(#sphereClip)">
+    <path d="M-4,78 C20,66 34,90 58,76 C82,62 92,84 118,68 L118,124 L-4,124 Z" fill="url(#clayBand)"/>
+
+    <!-- skyline: silhouette only (navy-ish, sits darker against clay/gradient) -->
+    <g fill="#22223b" opacity="0.8">
+      <rect x="6"  y="90" width="8"  height="28"/>
+      <rect x="15" y="80" width="7"  height="38"/>
+      <rect x="23" y="96" width="6"  height="22"/>
+      <rect x="30" y="74" width="9"  height="44"/>
+      <rect x="40" y="84" width="7"  height="34"/>
+      <rect x="48" y="68" width="10" height="50"/>
+      <rect x="59" y="88" width="7"  height="30"/>
+      <rect x="67" y="78" width="8"  height="40"/>
+      <rect x="76" y="94" width="7"  height="24"/>
+      <rect x="84" y="100" width="7" height="18"/>
+      <rect x="92" y="86" width="6"  height="32"/>
+      <rect x="51" y="60" width="3" height="8"/>
+      <rect x="33" y="66" width="3" height="8"/>
+    </g>
+
+    <circle cx="60" cy="60" r="56" fill="url(#specular)"/>
+  </g>
+
+  <circle cx="60" cy="60" r="56" fill="none" stroke="url(#rimLight)" stroke-width="1.6"/>
+  <circle cx="60" cy="60" r="56" fill="none" stroke="#14141f" stroke-width="1" opacity="0.35"/>
+
+  <ellipse cx="40" cy="36" rx="18" ry="12" fill="#ffffff" opacity="0.25" filter="url(#softBlur)"/>
+  <ellipse cx="36" cy="31" rx="7" ry="4.5" fill="#ffffff" opacity="0.35" filter="url(#softBlur)"/>
+</svg>
+

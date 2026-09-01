@@ -1,0 +1,207 @@
+{
+  "regions": [
+    "Manaus",
+    "Belém",
+    "Macapá",
+    "Grande São Luís",
+    "Teresina",
+    "Fortaleza",
+    "Natal",
+    "João Pessoa",
+    "Recife",
+    "Maceió",
+    "Aracaju",
+    "Salvador",
+    "Belo Horizonte",
+    "Grande Vitória",
+    "Rio de Janeiro",
+    "São Paulo",
+    "Curitiba",
+    "Florianópolis",
+    "Porto Alegre",
+    "Vale do Rio Cuiabá",
+    "Goiânia",
+    "Brasília"
+  ],
+  "aggregates": [
+    "Conjunto das RMs",
+    "Brasil"
+  ],
+  "years": [
+    "2012",
+    "2013",
+    "2014",
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025"
+  ],
+  "indicators": {
+    "gini": {
+      "label": "Índice de Gini",
+      "type": "index",
+      "abs_key": null,
+      "unit": ""
+    },
+    "renda": {
+      "label": "Renda média per capita",
+      "type": "currency",
+      "abs_key": null,
+      "unit": "R$"
+    },
+    "renda40": {
+      "label": "Renda média — 40% mais pobres",
+      "type": "currency",
+      "abs_key": null,
+      "unit": "R$"
+    },
+    "renda10": {
+      "label": "Renda média — 10% mais ricos",
+      "type": "currency",
+      "abs_key": null,
+      "unit": "R$"
+    },
+    "razao": {
+      "label": "Razão de Renda (10%+ ricos / 40%+ pobres)",
+      "type": "ratio",
+      "abs_key": null,
+      "unit": "x"
+    },
+    "pobreza_pct": {
+      "label": "Taxa de pobreza",
+      "type": "percent",
+      "abs_key": "pobreza_abs",
+      "unit": "%"
+    },
+    "pobreza_ext_pct": {
+      "label": "Taxa de pobreza extrema",
+      "type": "percent",
+      "abs_key": "pobreza_ext_abs",
+      "unit": "%"
+    }
+  },
+  "cardOrder": [
+    "gini",
+    "renda",
+    "renda40",
+    "renda10",
+    "razao",
+    "pobreza_pct",
+    "pobreza_ext_pct"
+  ],
+  "cardShort": {
+    "gini": "Gini",
+    "renda": "Renda",
+    "renda40": "Renda 40%+ pobres",
+    "renda10": "Renda 10%+ Ricos",
+    "razao": "Razão de Renda",
+    "pobreza_pct": "Pobreza",
+    "pobreza_ext_pct": "Pobreza extrema"
+  },
+  "capitals": {
+    "Manaus": [
+      -3.119,
+      -60.021
+    ],
+    "Belém": [
+      -1.455,
+      -48.49
+    ],
+    "Macapá": [
+      0.034,
+      -51.07
+    ],
+    "Grande São Luís": [
+      -2.529,
+      -44.302
+    ],
+    "Teresina": [
+      -5.089,
+      -42.801
+    ],
+    "Fortaleza": [
+      -3.717,
+      -38.543
+    ],
+    "Natal": [
+      -5.795,
+      -35.209
+    ],
+    "João Pessoa": [
+      -7.115,
+      -34.863
+    ],
+    "Recife": [
+      -8.047,
+      -34.877
+    ],
+    "Maceió": [
+      -9.649,
+      -35.708
+    ],
+    "Aracaju": [
+      -10.911,
+      -37.073
+    ],
+    "Salvador": [
+      -12.971,
+      -38.511
+    ],
+    "Belo Horizonte": [
+      -19.917,
+      -43.934
+    ],
+    "Grande Vitória": [
+      -20.319,
+      -40.338
+    ],
+    "Rio de Janeiro": [
+      -22.907,
+      -43.173
+    ],
+    "São Paulo": [
+      -23.551,
+      -46.633
+    ],
+    "Curitiba": [
+      -25.429,
+      -49.271
+    ],
+    "Florianópolis": [
+      -27.596,
+      -48.549
+    ],
+    "Porto Alegre": [
+      -30.033,
+      -51.23
+    ],
+    "Vale do Rio Cuiabá": [
+      -15.601,
+      -56.098
+    ],
+    "Goiânia": [
+      -16.686,
+      -49.264
+    ],
+    "Brasília": [
+      -15.793,
+      -47.882
+    ]
+  },
+  "palette": [
+    "#22223b",
+    "#4a4e69",
+    "#9a8c98",
+    "#c9ada7",
+    "#8a5a52",
+    "#5c7a63",
+    "#3d5a80"
+  ]
+}

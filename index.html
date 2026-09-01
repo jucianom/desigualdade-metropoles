@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desigualdade nas Metrópoles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app">
+
+  <header class="header">
+    <div class="sphere-wrap"><img src="assets/sphere.svg" alt="Símbolo do painel: esfera estilizada com skyline" width="138" height="138"></div>
+    <div class="header-text">
+      <p class="eyebrow">UFRJ · Observatório das Metrópoles · PUCRS Data Social · RedODSAL</p>
+      <h1 class="title">Desigualdade nas Metrópoles</h1>
+      <p class="subtitle">Painel de indicadores de desigualdade nas Regiões Metropolitanas do Brasil, no conjunto das RMs e no país com base nos microdados da PNAD Contínua (IBGE).</p>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="graficos">Painel</button>
+    <button class="tab-btn" data-tab="sobre">Sobre os dados</button>
+    <button class="tab-btn" data-tab="ficha">Ficha técnica</button>
+  </nav>
+
+  <!-- ===================== GRAFICOS + MAPAS (layout compartilhado) ===================== -->
+  <section class="tabpanel" id="tab-dados">
+    <div class="panel-full">
+        <p class="section-subtitle">Escolha um ano e compare os indicadores</p>
+        <div class="filters-row filters-stack-row">
+          <div class="filter-group">
+            <select id="f-ano" aria-label="Ano"></select>
+          </div>
+        </div>
+        <div class="filters-row filters-stack-row">
+          <div class="filters-left">
+            <div class="filter-group wide">
+              <label for="f-rm">Selecione a RM</label>
+              <select id="f-rm"></select>
+            </div>
+            <div class="filter-group wide">
+              <label for="f-comparacao">Selecione o recorte espacial para comparar</label>
+              <select id="f-comparacao"></select>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards-panel">
+          <div class="cards-row-block">
+            <p class="cards-row-label" id="cards-row-rm-label">Rio de Janeiro</p>
+            <div class="cards-row" id="cards-row-rm"></div>
+          </div>
+
+          <div class="cards-row-block">
+            <p class="cards-row-label" id="cards-row-comp-label">Brasil</p>
+            <div class="cards-row" id="cards-row-comp"></div>
+          </div>
+
+          <p class="section-subtitle section-subtitle-spaced">Escolha um indicador e compare sua evolução</p>
+          <div class="filters-row filters-stack-row">
+            <div class="filter-group wide">
+              <select id="f-indicador" aria-label="Indicador"></select>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-grid">
+          <div class="panel-box">
+            <h3 id="g1-title">Gráfico 1</h3>
+            <div class="chart-canvas-wrap" id="chart1-wrap">
+              <div id="chart1"></div>
+              <div class="viz-tooltip" id="chart1-tooltip"></div>
+            </div>
+          </div>
+          <div class="panel-box">
+            <h3 id="g2-title">Gráfico 2</h3>
+            <div class="chart-canvas-wrap" id="chart2-wrap">
+              <div id="chart2"></div>
+              <div class="viz-tooltip" id="chart2-tooltip"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-grid maps-grid">
+          <div class="panel-box">
+            <div class="panel-box-header-row">
+              <h3 id="m1-title">Área Mapa 1</h3>
+              <div class="filter-group compact filter-group-placeholder" aria-hidden="true">
+                <label>&nbsp;</label>
+                <select tabindex="-1"><option>2025</option></select>
+              </div>
+            </div>
+            <div class="map-svg-wrap" id="map1-wrap"></div>
+            <div class="map-legend" id="map1-legend"></div>
+            <div class="map-source-note">Base cartográfica: CARTO / OpenStreetMap · limites estaduais: IBGE (2022)</div>
+          </div>
+          <div class="panel-box">
+            <div class="panel-box-header-row">
+              <h3 id="m2-title">Área Mapa 2 — Comparação</h3>
+              <div class="filter-group compact">
+                <label for="fm-comparacao">Selecione um ano para comparar</label>
+                <select id="fm-comparacao"></select>
+              </div>
+            </div>
+            <div class="map-svg-wrap" id="map2-wrap"></div>
+            <div class="map-legend" id="map2-legend"></div>
+            <div class="map-source-note">Base cartográfica: CARTO / OpenStreetMap · limites estaduais: IBGE (2022)</div>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- ===================== SOBRE OS DADOS ===================== -->
+  <section class="tabpanel hidden" id="tab-sobre">
+    <div class="text-panel">
+      <h4>Sobre os dados</h4>
+<p>Este painel de dados tem como objetivo produzir um conjunto de informações relevantes acerca das desigualdades de rendimentos no interior das Regiões Metropolitanas do país. Esperamos que os dados aqui reunidos colaborem para um debate público mais bem informado a respeito da grave situação das metrópoles brasileiras no que concerne às desigualdades sociais.</p>
+<p>Para tanto, fazemos uso dos microdados da Pesquisa Nacional por Amostra de Domicílios Contínua (PNADc), do IBGE, em sua versão anual. Os indicadores são construídos a partir dos dados de todas as fontes de rendimento.</p>
+<p>Este trabalho é um desdobramento da publicação "Boletim Desigualdades nas Metrópoles", fruto de uma colaboração entre três instituições: o INCT Observatório das Metrópoles, sediado no Instituto de Pesquisa e Planejamento Urbano e Regional (IPPUR) da Universidade Federal do Rio de Janeiro (UFRJ), o PUCRS-Data Social e a Rede de Observatórios da Dívida Social na América Latina (RedODSAL).</p>
+<p>Maiores informações sobre a metodologia podem ser encontradas na última edição desse boletim: <a href="https://www.observatoriodasmetropoles.net.br/renda-do-trabalho-puxa-queda-da-pobreza-mas-brasil-segue-entre-os-mais-desiguais/" target="_blank" rel="noopener">Renda do trabalho puxa queda da pobreza, mas Brasil segue entre os mais desiguais</a>.</p>
+
+    </div>
+  </section>
+
+  <!-- ===================== FICHA TECNICA ===================== -->
+  <section class="tabpanel hidden" id="tab-ficha">
+    <div class="text-panel">
+      <div class="ficha-block">
+  <p class="role role-featured">Desenvolvimento</p>
+  <div class="person">
+    <div class="name">Prof. Dr. Juciano Martins Rodrigues</div>
+    <div class="desc">Professor do Instituto de Pesquisa e Planejamento Urbano e Regional (IPPUR) da Universidade Federal do Rio de Janeiro (UFRJ) · Coordenador do Núcleo RJ do Observatório das Metrópoles</div>
+  </div>
+</div>
+
+<h4>Boletim Desigualdades nas Metrópoles</h4>
+
+<div class="ficha-block">
+  <p class="role">Pesquisadores responsáveis</p>
+  <div class="person">
+    <div class="name">Prof. Dr. André Ricardo Salata</div>
+    <div class="desc">Professor de Sociologia da Pontifícia Universidade Católica do Rio Grande do Sul (PUCRS) · Pesquisador do Núcleo RS do Observatório das Metrópoles · Coordenador do PUCRS Data Social</div>
+  </div>
+  <div class="person">
+    <div class="name">Prof. Dr. Marcelo Gomes Ribeiro</div>
+    <div class="desc">Professor do Instituto de Pesquisa e Planejamento Urbano e Regional (IPPUR) da Universidade Federal do Rio de Janeiro (UFRJ) · Pesquisador do Núcleo RJ do Observatório das Metrópoles</div>
+  </div>
+  <div class="person">
+    <div class="name">Prof. Dr. Juciano Martins Rodrigues</div>
+    <div class="desc">Professor do Instituto de Pesquisa e Planejamento Urbano e Regional (IPPUR) da Universidade Federal do Rio de Janeiro (UFRJ) · Coordenador do Núcleo RJ do Observatório das Metrópoles</div>
+  </div>
+</div>
+
+<div class="ficha-block">
+  <p class="role">Instituições envolvidas</p>
+  <ul class="inst-list">
+    <li>Observatório das Metrópoles (Instituto Nacional de Ciência e Tecnologia – INCT)</li>
+    <li>Universidade Federal do Rio de Janeiro (UFRJ)</li>
+    <li>PUCRS-Data Social: Laboratório de Desigualdades, Pobreza e Mercado de Trabalho</li>
+    <li>Rede de Observatórios da Dívida Social na América Latina (RedODSAL)</li>
+  </ul>
+</div>
+
+<div class="ficha-block">
+  <p class="role">Fomento</p>
+  <ul class="fund-list">
+    <li>Fundação Porticus</li>
+    <li>Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq)</li>
+    <li>Fundação Carlos Chagas Filho de Amparo à Pesquisa do Estado do Rio de Janeiro (FAPERJ)</li>
+  </ul>
+</div>
+
+<div class="ficha-block">
+  <p class="role">Contatos (assessoria de comunicação e marketing)</p>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="org">PUCRS (ASCOM)</div>
+      <div class="line">imprensa@pucrs.br</div>
+      <div class="line">ascom@pucrs.br</div>
+      <div class="line">(51) 3320-3503 · (51) 3320-3603</div>
+    </div>
+    <div class="contact-card">
+      <div class="org">Comunicação Observatório das Metrópoles</div>
+      <div class="line">comunicacao@observatoriodasmetropoles.net</div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <img class="ufrj-logo" src="assets/logos/ufrj.png" alt="Logo UFRJ">
+    <img class="om-logo" src="assets/logos/observatorio-metropoles.png" alt="Logo Observatório das Metrópoles">
+    <img class="pucrs-logo" src="assets/logos/pucrs-data-social.png" alt="Logo Laboratório de Desigualdades, Pobreza e Mercado de Trabalho - PUCRS Data Social">
+    <img src="assets/logos/redodsal.jpg" alt="Logo Red ODSAL">
+  </footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="js/app.js" defer></script>
+</body>
+</html>
